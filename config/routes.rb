@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'players#index'
   resources :players
   post '/auth/login', to: 'authentication#login'
   resources :users
