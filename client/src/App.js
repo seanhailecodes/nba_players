@@ -8,7 +8,7 @@ import Register from './components/Register'
 
 import {
   loginUser,
-  registerUser
+  registerUser,
 } from './services/api-helper'
 
 import './App.css';
@@ -66,7 +66,6 @@ class App extends Component {
       }
     }));
   }
-
 
   render() {
     return (

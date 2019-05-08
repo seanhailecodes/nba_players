@@ -25,3 +25,15 @@ export const registerUser = (registerData) => {
     return fetch(`${baseUrl}/users/`, opts)
         .then(resp => resp.json())
 }
+
+const createPlayer = (data) => {
+    const opts = {
+        method: 'POST',
+        body: JSON.stringify({ player: data }),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }
+    return fetch(`${baseUrl}/players`, opts)
+        .then(resp => resp.json())
+}
