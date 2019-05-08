@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import { Route, Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
 import decode from 'jwt-decode';
+import PlayerPage from './components/PlayerPage'
 import CreatePlayer from './components/CreatePlayer'
 import Login from './components/Login'
 import Register from './components/Register'
+import PlayersView from './components/PlayersView'
 
 import {
   createPlayer,
@@ -22,9 +24,9 @@ class App extends Component {
       playerForm: {
         name: "",
         photo: "",
-        position: "",
-        height: "",
-        team: ""
+        // position: "",
+        // height: "",
+        // team: "" ~~~add to component~~~
       },      
         currentUser: null,
         authFormData: {
@@ -103,6 +105,31 @@ class App extends Component {
             handleRegister={this.handleRegister}
             handleChange={this.authHandleChange}
             formData={this.state.authFormData} />)} />
+        <Route
+        exact path="/"
+        render={() => (
+          <PlayersView
+          players={this.state.players}
+          playerForm={this.state.playerForm}
+          handleFormChange={this.handleFormChange}
+          newPlayer={this.newPlayer} />
+        )}
+        />
+        <Route
+        path="/players/:id"
+        render={(props) => {
+          const { id } = props.match.params;
+          const player = this.state.players.find(el => el.id === parseInt(id));
+          return <PlayerPage
+            id = { id }
+            player = { player }
+            handleFormChange = { this.handleFormChange }
+            mountEditForm = { this.mountEditForm }
+            editPlayer = { this.editPlayer }
+            playerForm = { this.state.playerForm }
+            deletePlayer = { this.deletePlayer } />
+        }}
+        />
       </div>
     )
   }
