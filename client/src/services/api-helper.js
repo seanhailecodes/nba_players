@@ -43,8 +43,20 @@ const readAllPlayers = () => {
     .then(resp => resp.json()) 
     }
 
+const updatePlayer = (id, data) => {
+    const opts = {
+        method: 'PUT',
+        body: JSON.stringify({ player: data }),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }
+    return fetch(`${baseUrl}/teachers/${id}`, opts)
+    .then(resp => resp.json())
+}
 
 export {
     createPlayer,
     readAllPlayers,
+    updatePlayer,
 }
