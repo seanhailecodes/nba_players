@@ -18,6 +18,7 @@ function CreatePlayer(props) {
           name="name"
           value={props.playerForm.name}
           onChange={props.handleFormChange} />
+          
         <button>Submit</button>
       </form>
     </div >

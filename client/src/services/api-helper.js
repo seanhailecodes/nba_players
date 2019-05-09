@@ -37,3 +37,7 @@ const createPlayer = (data) => {
     return fetch(`${baseUrl}/players`, opts)
         .then(resp => resp.json())
 }
+
+export {
+    createPlayer
+}

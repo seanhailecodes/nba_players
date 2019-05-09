@@ -35,13 +35,64 @@ class App extends Component {
           password: ""
       }
     }
-
+    this.handleFormChange = this.handleFormChange.bind(this)
     this.handleLoginButton = this.handleLoginButton.bind(this)
+    this.newPlayer = this.newPlayer.bind(this)
     this.handleLogin = this.handleLogin.bind(this)
     this.handleRegister = this.handleRegister.bind(this)
     this.handleLogout = this.handleLogout.bind(this)
     this.authHandleChange = this.authHandleChange.bind(this)
   }
+
+  
+ 
+  
+  // componentDidMount() {
+  //   this.getPlayers();
+  //   const checkUser = localStorage.getItem("jwt");
+  //   if (checkUser) {
+  //     const user = decode(checkUser);
+  //     this.setState({
+  //       currentUser: user
+  //     })
+  //   }
+  // }
+
+  // componentDidMount() {
+  //   this.getPlayers();
+  //   const checkUser = localStorage.getItem("jwt");
+  //   if (checkUser) {
+  //     const user = decode(checkUser);
+  //     this.setState({
+  //       currentUser: user
+  //     })
+  //   }
+  // }
+
+  async newPlayer(e){
+    e.preventDefault();
+    const player = await createPlayer(this.state.playerForm)
+    this.setState(prevState => ({
+      players: [...prevState.players, player],
+      playerForm: {
+        name: "",
+        photo: ""
+      }
+    }))
+  }
+
+handleFormChange(e) {
+  const { name, value } = e.target;
+  this.setState(prevState => ({
+    playerForm: {
+      ...prevState.playerForm,
+      [name]: value
+    }
+  }))
+}
+
+
+  // ~~~~~Authentication Handlers Below~~~~~~~
 
   handleLoginButton() {
     this.props.history.push("/login")
@@ -82,7 +133,13 @@ class App extends Component {
     return (
       <div className="App">
         <header>
-          <h1>NBA Players App</h1>
+          <h1><Link to='/' onClick={()=> this.setState({
+            playerForm: {
+              name: "",
+              photo: ""
+            }
+          })}></Link>
+            NBA Players App</h1>
           <div>
             {this.state.currentUser
               ?
@@ -115,6 +172,14 @@ class App extends Component {
           newPlayer={this.newPlayer} />
         )}
         />
+        <Route 
+        path="/new/player"
+        render={() => (
+          <CreatePlayer
+            handleFormChange={this.handleFormChange}
+            playerForm={this.state.playerForm}
+            newPlayer={this.newPlayer} />
+        )} />
         <Route
         path="/players/:id"
         render={(props) => {
