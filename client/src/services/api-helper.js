@@ -38,6 +38,13 @@ const createPlayer = (data) => {
         .then(resp => resp.json())
 }
 
+const readAllPlayers = () => {
+    return fetch(`${baseUrl}/players`)
+    .then(resp => resp.json()) 
+    }
+
+
 export {
-    createPlayer
+    createPlayer,
+    readAllPlayers,
 }

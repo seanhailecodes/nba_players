@@ -10,8 +10,9 @@ import PlayersView from './components/PlayersView'
 
 import {
   createPlayer,
+  readAllPlayers,
   loginUser,
-  registerUser,
+  registerUser
 } from './services/api-helper'
 
 import './App.css';
@@ -36,6 +37,7 @@ class App extends Component {
       }
     }
     this.handleFormChange = this.handleFormChange.bind(this)
+    this.mountEditForm = this.mountEditForm.bind(this)
     this.handleLoginButton = this.handleLoginButton.bind(this)
     this.newPlayer = this.newPlayer.bind(this)
     this.handleLogin = this.handleLogin.bind(this)
@@ -47,27 +49,23 @@ class App extends Component {
   
  
   
-  // componentDidMount() {
-  //   this.getPlayers();
-  //   const checkUser = localStorage.getItem("jwt");
-  //   if (checkUser) {
-  //     const user = decode(checkUser);
-  //     this.setState({
-  //       currentUser: user
-  //     })
-  //   }
-  // }
+  componentDidMount() {
+    this.getPlayers();
+    const checkUser = localStorage.getItem("jwt");
+    if (checkUser) {
+      const user = decode(checkUser);
+      this.setState({
+        currentUser: user
+      })
+    }
+  }
 
-  // componentDidMount() {
-  //   this.getPlayers();
-  //   const checkUser = localStorage.getItem("jwt");
-  //   if (checkUser) {
-  //     const user = decode(checkUser);
-  //     this.setState({
-  //       currentUser: user
-  //     })
-  //   }
-  // }
+  async getPlayers() {
+    const players = await readAllPlayers()
+    this.setState({
+      players
+    })
+  }
 
   async newPlayer(e){
     e.preventDefault();
@@ -89,6 +87,14 @@ handleFormChange(e) {
       [name]: value
     }
   }))
+}
+
+async mountEditForm(id) {
+  const players = await readAllPlayers();
+  const player = players.find(el => el.id === parseInt(id));
+  this.setState({
+    playerForm: player
+  });
 }
 
 
