@@ -19,7 +19,7 @@ class PlayerPage extends Component {
     const { player } = this.props;
     return (
       <div className="player-page">
-        {player === undefined ? <h2>Loading . . .</h2> : (
+        {player === undefined ? <h2>No player found . . .</h2> : (
           <div>
             <img alt={player.name} src={player.photo} />
             {this.state.isEdit ?

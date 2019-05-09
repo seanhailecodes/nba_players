@@ -55,8 +55,15 @@ const updatePlayer = (id, data) => {
     .then(resp => resp.json())
 }
 
+const destroyPlayer = (id) => {
+    const opts = {
+        method: 'DELETE'
+    }
+    return fetch(`${baseUrl}/players/${id}`, opts)
+}
 export {
     createPlayer,
     readAllPlayers,
     updatePlayer,
+    destroyPlayer
 }

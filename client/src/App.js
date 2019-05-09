@@ -13,7 +13,8 @@ import {
   readAllPlayers,
   loginUser,
   registerUser,
-  updatePlayer
+  updatePlayer,
+  destroyPlayer
 } from './services/api-helper'
 
 import './App.css';
@@ -40,6 +41,7 @@ class App extends Component {
     this.handleFormChange = this.handleFormChange.bind(this)
     this.mountEditForm = this.mountEditForm.bind(this)
     this.editPlayer = this.editPlayer.bind(this)
+    this.deletePlayer = this.deletePlayer.bind(this)
     this.handleLoginButton = this.handleLoginButton.bind(this)
     this.newPlayer = this.newPlayer.bind(this)
     this.handleLogin = this.handleLogin.bind(this)
@@ -91,6 +93,13 @@ class App extends Component {
     ))
   }
 
+async deletePlayer(id){
+  await destroyPlayer(id);
+  this.setState(prevState => ({
+    players: prevState.players.filter(player => player.id !== id)
+  }))
+}
+
 handleFormChange(e) {
   const { name, value } = e.target;
   this.setState(prevState => ({
@@ -100,8 +109,6 @@ handleFormChange(e) {
     }
   }))
 }
-
-
 
 async mountEditForm(id) {
   const players = await readAllPlayers();
