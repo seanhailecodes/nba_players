@@ -8,6 +8,7 @@ import Login from './components/Login'
 import Register from './components/Register'
 import PlayersView from './components/PlayersView'
 
+
 import {
   createPlayer,
   readAllPlayers,
@@ -50,9 +51,6 @@ class App extends Component {
     this.authHandleChange = this.authHandleChange.bind(this)
   }
 
-  
- 
-  
   componentDidMount() {
     this.getPlayers();
     const checkUser = localStorage.getItem("jwt");
@@ -160,14 +158,14 @@ async mountEditForm(id) {
     return (
       <div className="App">
         <header>
-        <img src='https://i.imgur.com/gjZUGe4.jpg?1' className="App-logo" alt="logo" />
+        <img src='' className="App-logo" alt="logo" />
           <h1 className="nbaLogo"><Link to='/' onClick={()=> this.setState({
             playerForm: {
               name: "",
               photo: ""
             }
-          })}></Link>
-            NBA Players App</h1>
+          })}>
+            NBA Players App</Link></h1>
           <div>
             {this.state.currentUser
               ?
@@ -220,6 +218,7 @@ async mountEditForm(id) {
             mountEditForm = { this.mountEditForm }
             editPlayer = { this.editPlayer }
             playerForm = { this.state.playerForm }
+            currentUser = { this.state.currentUser }
             deletePlayer = { this.deletePlayer } />
         }}
         />

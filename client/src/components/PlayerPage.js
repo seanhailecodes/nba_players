@@ -37,17 +37,22 @@ class PlayerPage extends Component {
               :
               <>
                 <h1>{player.name}</h1>
-                <button onClick={() => {
-                  this.setState({
-                    isEdit: true
-                  })
-                  this.props.history.push(`/players/${player.id}/edit`)
-                }}>Edit</button>
-                <button onClick={() => {
-                  this.props.deletePlayer(player.id);
-                  this.props.history.push('/')
-                }}>Delete</button>
-                
+                  {
+                    this.props.currentUser && (
+                      <>
+                        <button onClick={() => {
+                          this.setState({
+                            isEdit: true
+                          })
+                          this.props.history.push(`/players/${player.id}/edit`)
+                        }}>Edit</button>
+                        <button onClick={() => {
+                          this.props.deletePlayer(player.id);
+                          this.props.history.push('/')
+                        }}>Delete</button>
+                      </>
+                    )
+                  }
               </>
             }
           </div>)}
