@@ -1,11 +1,11 @@
-
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import './EditPlayer.css'
 
 function EditPlayer(props) {
   return (
     <div>
-      <h3>Create a new player</h3>
+      <h3 classname="nba" >Create a new player</h3>
       <form onSubmit={props.handleSubmit}>
         <p>Photo Link:</p>
         <input

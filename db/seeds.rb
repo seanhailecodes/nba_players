@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 Player.create!(name: 'Charles Barkley', photo: 'https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/787.png', position: 'F', height: '6-6', team: '76ers')
 
-Player.create!(name: 'Kobe Bryant', photo: 'https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/1610612747/260x190/977.png', position: 'F', height: '6-6', team: 'Lakers')
+Player.create!(name: 'Kobe Bryant', photo: 'https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/1610612747/2015/260x190/977.png', position: 'F', height: '6-6', team: 'Lakers')
 
 
 Player.create!(name: 'Michael Jordan', photo: 'https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/1610612744/260x190/201142.png', position: 'G', height: '6-7', team: 'Bulls')

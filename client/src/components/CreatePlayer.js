@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 function CreatePlayer(props) {
   return (
     <div className="create-form" >
-      <h2>Create a Player</h2>
+      <h2 classname="nba">Create a Player</h2>
       <form onSubmit={props.newPlayer}>
         <p>Photo Link:</p>
         <input

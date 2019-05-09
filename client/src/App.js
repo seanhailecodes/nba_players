@@ -160,7 +160,8 @@ async mountEditForm(id) {
     return (
       <div className="App">
         <header>
-          <h1><Link to='/' onClick={()=> this.setState({
+        <img src='https://i.imgur.com/gjZUGe4.jpg?1' className="App-logo" alt="logo" />
+          <h1 className="nbaLogo"><Link to='/' onClick={()=> this.setState({
             playerForm: {
               name: "",
               photo: ""

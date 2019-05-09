@@ -1,3 +1,30 @@
+/* html {
+  background: black;
+} */
+
+.App {
+  text-align: center;
+}
+
+/* .App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+  pointer-events: none;
+  float: left;
+} */
+
+.nbaLogo {
+  color: #f56c27;
+  font-size: 44pt;
+}
+.nba {
+  color: #f56c27;
+  list-style: none;
+}
+
+.login {
+  color: #f56c27;
+}
 .App {
   text-align: center;
 }
