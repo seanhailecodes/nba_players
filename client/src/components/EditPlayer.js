@@ -1,6 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import './EditPlayer.css'
+import './css/EditPlayer.css'
 
 function EditPlayer(props) {
   return (

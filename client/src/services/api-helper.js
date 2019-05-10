@@ -51,7 +51,7 @@ const updatePlayer = (id, data) => {
             'Content-Type': 'application/json'
         }
     }
-    return fetch(`${baseUrl}/teachers/${id}`, opts)
+    return fetch(`${baseUrl}/players/${id}`, opts)
     .then(resp => resp.json())
 }
 

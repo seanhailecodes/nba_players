@@ -28,9 +28,9 @@ class App extends Component {
       playerForm: {
         name: "",
         photo: "",
-        // position: "",
-        // height: "",
-        // team: "" ~~~add to component~~~
+        position: "",
+        height: "",
+        team: "" 
       },      
         currentUser: null,
         authFormData: {
@@ -158,14 +158,18 @@ async mountEditForm(id) {
     return (
       <div className="App">
         <header>
-        <img src='' className="App-logo" alt="logo" />
-          <h1 className="nbaLogo"><Link to='/' onClick={()=> this.setState({
+          
+        <img className="nbaLogo" src='https://i.imgur.com/I015q9i.png' alt="" />
+       
+        <img src='https://i.imgur.com/gjZUGe4.jpg?1' className="App-logo" alt="logo" /> 
+          
+          <h1><Link to='/' onClick={()=> this.setState({
             playerForm: {
               name: "",
               photo: ""
             }
           })}>
-            NBA Players App</Link></h1>
+           <p className="nbaApp">NBA Players </p></Link></h1>
           <div>
             {this.state.currentUser
               ?

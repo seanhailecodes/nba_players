@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router';
+import './css/PlayersView.css'
 
 function PlayersView(props) {
   return (
@@ -17,6 +18,15 @@ function PlayersView(props) {
           <h3>
             <p>{player.name}</p>
           </h3>
+          <h5>
+            <p className="playerDetail">{player.position}</p>
+          </h5>
+          <h5>
+            <p className="playerDetail">{player.height}</p>
+          </h5>
+          <h5 className="playerDetail">
+            <p>{player.team}</p>
+          </h5>
         </div>
       ))}
       <div
