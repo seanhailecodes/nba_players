@@ -1,4 +1,4 @@
-const baseUrl = 'http://localhost:3000'
+const baseUrl = 'http://nba-players-app.herokuapp.com'
 
 export const loginUser = (loginData) => {
     const opts = {
@@ -36,6 +36,7 @@ const createPlayer = (data) => {
     }
     return fetch(`${baseUrl}/players`, opts)
         .then(resp => resp.json())
+        .catch(error => console.log(error))
 }
 
 const readAllPlayers = () => {
@@ -53,6 +54,7 @@ const updatePlayer = (id, data) => {
     }
     return fetch(`${baseUrl}/players/${id}`, opts)
     .then(resp => resp.json())
+    .catch(error => console.log(error))
 }
 
 const destroyPlayer = (id) => {
