@@ -11,6 +11,7 @@ export const loginUser = (loginData) => {
 
     return fetch(`${baseUrl}/auth/login`, opts)
         .then(resp => resp.json())
+        .catch(error => console.log(error))
 }
 
 export const registerUser = (registerData) => {
@@ -24,6 +25,8 @@ export const registerUser = (registerData) => {
 
     return fetch(`${baseUrl}/users/`, opts)
         .then(resp => resp.json())
+        .then(resp=>console.log(resp))
+        .catch(error => console.log(error))
 }
 
 const createPlayer = (data) => {
