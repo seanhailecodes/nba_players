@@ -45,6 +45,7 @@ const createPlayer = (data) => {
 const readAllPlayers = () => {
     return fetch(`${baseUrl}/players`)
     .then(resp => resp.json()) 
+    .catch(error => console.log(error))
     }
 
 const updatePlayer = (id, data) => {
