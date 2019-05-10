@@ -8,7 +8,6 @@ import Login from './components/Login'
 import Register from './components/Register'
 import PlayersView from './components/PlayersView'
 
-
 import {
   createPlayer,
   readAllPlayers,
@@ -157,19 +156,21 @@ async mountEditForm(id) {
   render() {
     return (
       <div className="App">
-        <header>
+        <header className="header">
           
-        <img className="nbaLogo" src='https://i.imgur.com/I015q9i.png' alt="" />
-       
+        <img src='https://i.imgur.com/gjZUGe4.jpg?1' id="nbaLogo" src='https://i.imgur.com/4SXNFmT.jpg' alt="" />
+  
+
         <img src='https://i.imgur.com/gjZUGe4.jpg?1' className="App-logo" alt="logo" /> 
           
+          </header>
           <h1><Link to='/' onClick={()=> this.setState({
             playerForm: {
               name: "",
               photo: ""
             }
           })}>
-           <p className="nbaApp">NBA Players </p></Link></h1>
+           <p id="nbaTitle">NBA Players </p></Link></h1>
           <div>
             {this.state.currentUser
               ?
@@ -181,7 +182,6 @@ async mountEditForm(id) {
               <button onClick={this.handleLoginButton}>Login/register</button>
             }
           </div>
-        </header>
         <Route exact path="/login" render={() => (
           <Login
             handleLogin={this.handleLogin}
