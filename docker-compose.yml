@@ -1,0 +1,27 @@
+version: '3.8'
+services:
+  db:
+    image: postgres:11
+    environment:
+      POSTGRES_DB: nba_players_development
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  web:
+    build: .
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3001 -b '0.0.0.0'"
+    volumes:
+      - ".:/app"
+    ports:
+      - "3001:3001"
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: postgresql://postgres:password@db:5432/nba_players_development
+
+volumes:
+  postgres_data:

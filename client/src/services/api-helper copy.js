@@ -1,4 +1,4 @@
-const baseUrl = 'http://localhost:3001'
+const baseUrl = 'http://nba-players-app.herokuapp.com'
 
 export const loginUser = (loginData) => {
     const opts = {
@@ -44,22 +44,9 @@ const createPlayer = (data) => {
 
 const readAllPlayers = () => {
     return fetch(`${baseUrl}/players`)
-    .then(resp => {
-        if (!resp.ok) {
-            throw new Error(`HTTP error! status: ${resp.status}`);
-        }
-        return resp.json();
-    })
-    .catch(error => {
-        console.log('API Error:', error);
-        // Return mock NBA players data when API fails
-        return [
-            { id: 1, name: "LeBron James", team: "Lakers", position: "Forward" },
-            { id: 2, name: "Stephen Curry", team: "Warriors", position: "Guard" },
-            { id: 3, name: "Kevin Durant", team: "Suns", position: "Forward" }
-        ];
-    })
-}
+    .then(resp => resp.json()) 
+    .catch(error => console.log(error))
+    }
 
 const updatePlayer = (id, data) => {
     const opts = {
