@@ -3,12 +3,15 @@ Rails.application.configure do
 
   # Code is not reloaded between requests.
   config.cache_classes = true
+    config.hosts << "nbaplayers-production.up.railway.app"
 
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both threaded web servers
   # and those relying on copy on write to perform better.
   # Rake tasks automatically ignore this option for performance.
   config.eager_load = true
+  # In config/environments/production.rb  
+  config.hosts.clear
 
   # Full error reports are disabled and caching is turned on.
   config.consider_all_requests_local       = false
