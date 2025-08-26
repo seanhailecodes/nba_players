@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root 'players#index'
+  get '/seed_data', to: 'players#seed_data'
   resources :players
   post '/auth/login', to: 'authentication#login'
   resources :users

@@ -5,7 +5,6 @@ class PlayersController < ApplicationController
   # GET /players
   def index
     @players = Player.all
-
     render json: @players
   end
 
@@ -37,6 +36,19 @@ class PlayersController < ApplicationController
   # DELETE /players/1
   def destroy
     @player.destroy
+  end
+
+  # GET /seed_data
+  def seed_data
+    if Player.count == 0
+      Player.create!(name: 'Charles Barkley', photo: 'https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/787.png', position: 'F', height: '6-6', team: '76ers')
+      Player.create!(name: 'Kobe Bryant', photo: 'https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/1610612747/2015/260x190/977.png', position: 'F', height: '6-6', team: 'Lakers')
+      Player.create!(name: 'Michael Jordan', photo: 'https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/893.png', position: 'G', height: '6-7', team: 'Bulls')
+      
+      render json: { message: "Seeded #{Player.count} players" }
+    else
+      render json: { message: "Database already has #{Player.count} players" }
+    end
   end
 
   private
