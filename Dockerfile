@@ -23,9 +23,5 @@ COPY . .
 # Expose port 3001
 EXPOSE 3001
 
-RUN rails db:create RAILS_ENV=production || true
-RUN rails db:migrate RAILS_ENV=production
-RUN rails db:seed RAILS_ENV=production
-
 # Start the Rails server
 CMD ["rails", "server", "-b", "0.0.0.0", "-p", "3001"]
