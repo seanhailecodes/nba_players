@@ -1,4 +1,4 @@
-const baseUrl = 'http://localhost:3001'
+const baseUrl = 'https://nbaplayers-production.up.railway.app'
 
 export const loginUser = (loginData) => {
     const opts = {
